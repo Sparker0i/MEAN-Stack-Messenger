@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostListService } from '../post-list/post-list.service';
+import { Post } from '../post.model';
 
 @Component({
   selector: 'app-post-create',
@@ -6,16 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-  enteredValue = ""
-  newPost = "No content!!"
+  enteredTitle = ""
+  enteredContent = ""
 
-  constructor() { }
+  constructor(private postListService: PostListService) { }
 
   ngOnInit(): void {
+
   }
 
   onAddPost() {
-    this.newPost = this.enteredValue
+    this.postListService.onAddPost(this.enteredTitle, this.enteredContent)
   }
 
 }
